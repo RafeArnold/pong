@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server.prod.Dockerfile
+    ports:
+      - 8080:8080
