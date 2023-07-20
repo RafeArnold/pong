@@ -154,7 +154,21 @@ impl TcpStreamHandler {
                                     },
                                     &mut self.stream,
                                 );
-                                if *left_player_ready && *right_player_ready {
+                                if !(*left_player_ready && *right_player_ready) {
+                                    let opponent_conn = if is_left_player {
+                                        right_player_conn
+                                    } else {
+                                        left_player_conn
+                                    };
+                                    Self::write_to_client(
+                                        if is_ready {
+                                            AwaitingReadyServerMessage::OpponentReadied
+                                        } else {
+                                            AwaitingReadyServerMessage::OpponentUnreadied
+                                        },
+                                        opponent_conn,
+                                    );
+                                } else {
                                     // both players are ready. start the game.
                                     let paddle_starting_position = 0;
                                     // GAME_HEIGHT / 2 - PADDLE_HEIGHT / 2;

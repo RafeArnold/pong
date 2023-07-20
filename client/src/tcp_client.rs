@@ -293,18 +293,18 @@ impl TcpClient {
                         AwaitingReadyServerMessage::OpponentReadied => {
                             let colour = Color::Green;
                             if is_left_player {
-                                display_status_left(&mut stdout, "opponent is ready    ", colour);
-                            } else {
                                 display_status_right(&mut stdout, "    opponent is ready", colour);
+                            } else {
+                                display_status_left(&mut stdout, "opponent is ready    ", colour);
                             }
                         }
                         AwaitingReadyServerMessage::OpponentUnreadied => {
                             let text = "opponent is not ready";
                             let colour = Color::Red;
                             if is_left_player {
-                                display_status_left(&mut stdout, text, colour);
-                            } else {
                                 display_status_right(&mut stdout, text, colour);
+                            } else {
+                                display_status_left(&mut stdout, text, colour);
                             }
                         }
                         AwaitingReadyServerMessage::YouReadied => {
