@@ -49,7 +49,7 @@ fn main() {
             .name("tcp_client".to_owned())
             .spawn(move || {
                 let server_address = std::env::var("PONG_SERVER_ADDR")
-                    .unwrap_or(include_str!("../server_addr").to_owned());
+                    .unwrap_or(include_str!("../default_server_addr").to_owned());
                 TcpClient::run(
                     &server_address,
                     cli.command,
