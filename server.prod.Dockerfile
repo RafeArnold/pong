@@ -1,4 +1,4 @@
-FROM pong-builder AS builder
+FROM rust:alpine AS builder
 WORKDIR /build
 COPY . .
 RUN cargo build --release --bin server --target x86_64-unknown-linux-musl
