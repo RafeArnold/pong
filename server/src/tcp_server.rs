@@ -19,7 +19,8 @@ struct TcpServer {
 }
 
 pub fn start() {
-    let server = TcpListener::bind("127.0.0.1:8080").expect("failed to start server");
+    let address = std::env::var("SERVER_ADDR").unwrap_or("0.0.0.0:8080".to_owned());
+    let server = TcpListener::bind(address).expect("failed to start server");
     println!("server started");
     TcpServer::new(server).handle_incoming();
 }
