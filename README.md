@@ -1,7 +1,7 @@
 # pong
 play pong online, entirely within your terminal.
 
-a server and terminal client implementation of pong.
+a server and terminal client implementation of pong, built entirely in rust. client and server communicate over raw tcp using an _extremely_ compact custom protocol (most messages are one or two bytes in length).
 
 ## usage
 
